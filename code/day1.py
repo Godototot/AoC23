@@ -13,13 +13,36 @@ def filter_to_cal_values(cal_lines):
         cal_value_list.append(int(l_numbers[0]+l_numbers[-1]))
     return cal_value_list
 
+# who cares about your overlaps now?!
+numbers = {
+    "one": "one1one",
+    "two": "two2two",
+    "three": "three3three",
+    "four": "four4four",
+    "five": "five5five",
+    "six": "six6six",
+    "seven": "seven7seven",
+    "eight": "eight8eight",
+    "nine": "nine9nine"
+}
+
+
+def replace_numbers(cal_lines):
+    polished_cal_lines = cal_lines
+    for i, line in enumerate(cal_lines):
+        for nr in numbers:
+            polished_cal_lines[i] = polished_cal_lines[i].replace(nr, numbers[nr])
+
+    return polished_cal_lines
+
 
 def part1(input_data):
     return sum(filter_to_cal_values(input_data))
 
 
 def part2(input_data):
-    return ''
+    polished_cal_list = replace_numbers(input_data)
+    return sum(filter_to_cal_values(polished_cal_list))
 
 
 def main() -> None:
